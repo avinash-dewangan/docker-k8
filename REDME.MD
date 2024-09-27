@@ -1,0 +1,129 @@
+# Step
+
+## in Window
+* install docker desktop
+* inside doecker go to setting and the click kubernates and enable kubernates
+
+
+## Create Dockerfile
+
+
+## create image command
+docker build -t user .
+
+### docker process command
+docker ps
+
+### docker list of images
+docker images
+
+## push the image in local directory
+>docker run -d -p 5000:5000 --restart=always --name registry registry:2 
+> 
+> docker tag user:latest localhost:5000/user:latest
+> 
+> docker push localhost:5000/user:latest
+
+
+
+## run below command
+>kubectl apply -f deployment.yaml
+>
+>kubectl apply -f service.yaml
+
+
+
+## Installing the Kubernetes Dashboard
+* Deploying the Kubernetes Dashboard is not a tough job, you’d have to follow the step-by-step procedure given below. We need to apply the recommended deployment descriptor file:
+> $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+* Next step is to check all the resources by the below command 
+> $ kubectl get all -n kubernetes-dashboard
+
+
+> kubectl get pods -A
+
+## Creating Admin user
+The Kubernetes dashboard supports a few ways to manage access control. In this example, we’ll be creating an admin user account with full privileges to modify the cluster and using tokens.
+
+Start by making a new directory for the dashboard configuration files.
+
+>$ mkdir ~/dashboard && cd ~/dashboard
+
+>$ nano dashboard-admin.yaml
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample HTML Page</title>
+</head>
+<body>
+<p style="background: black;padding: 10px">
+apiVersion: v1 <br/>
+kind: ServiceAccount<br/>
+metadata:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;name: admin-user<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;namespace: kubernetes-dashboard<br/>
+---<br/>
+apiVersion: rbac.authorization.k8s.io/v1<br/>
+kind: ClusterRoleBinding<br/>
+metadata:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;name: admin-user<br/>
+roleRef:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;apiGroup: rbac.authorization.k8s.io<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;kind: ClusterRole<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;name: cluster-admin<br/>
+subjects:<br/>
+&nbsp;&nbsp;&nbsp;- kind: ServiceAccount<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;name: admin-user<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;namespace: kubernetes-dashboard<br/>
+</p>
+</body>
+</html>
+
+
+Then deploy the admin user role with the next command.
+
+> kubectl apply -f dashboard-admin.yaml
+
+
+## kubernatic dashboard open
+>kubectl proxy
+
+## open this link
+>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/.
+
+## for token genrate command
+>kubectl -n kubernetes-dashboard create token admin-user
+
+## get pods
+>kubectl get pods        
+
+
+## List of service deployed
+>kubectl get service
+
+## List of service deployment count
+>kubectl get deployments
+
+## service scale
+>kubectl scale deployment node-app --replicas=0
+
+# Delete
+## all pds
+>kubectl delete services --all
+> 
+>kubectl delete pods --all
+> 
+>kubectl delete deployment --all
+
+## pod logs
+* --follow: Continuously stream the logs as they are generated. 
+* --tail: Specify the number of lines of log output to display. 
+* --since: Only show log output generated within a certain duration. 
+* --timestamps: Add timestamps to the log output.
+
+> kubectl logs <pod-name>
+* Example
+>  kubectl logs --follow user-784b6cb6-8xnsg
