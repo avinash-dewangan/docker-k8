@@ -6,7 +6,7 @@
 
 
 ## Create Dockerfile
-
+* Here is this project Dockerfile example for Java spring boot jar project
 
 ## create image command
 docker build -t user .
