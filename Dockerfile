@@ -1,6 +1,6 @@
 FROM openjdk:18-alpine AS builder
-WORKDIR /edistrict-user-management
+WORKDIR /project-name
 
-COPY target/user-management-0.0.1-SNAPSHOT.jar /edistrict-user-management/user-management-0.0.1-SNAPSHOT.jar
+COPY target/project-name-0.0.1-SNAPSHOT.jar /project-name/project-name-0.0.1-SNAPSHOT.jar
 
-CMD ["java", "-jar", "user-management-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "project-name-0.0.1-SNAPSHOT.jar"]
