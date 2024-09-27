@@ -48,11 +48,11 @@ kubectl apply -f service.yaml
 ## Installing the Kubernetes Dashboard
 * Deploying the Kubernetes Dashboard is not a tough job, you’d have to follow the step-by-step procedure given below. We need to apply the recommended deployment descriptor file:
 ```
-$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
 ```
 * Next step is to check all the resources by the below command 
 ```
-$ kubectl get all -n kubernetes-dashboard
+kubectl get all -n kubernetes-dashboard
 ```
 ```
 kubectl get pods -A
@@ -62,8 +62,8 @@ The Kubernetes dashboard supports a few ways to manage access control. In this e
 
 Start by making a new directory for the dashboard configuration files.
 ```
-$ mkdir ~/dashboard && cd ~/dashboard
-$ nano dashboard-admin.yaml
+mkdir ~/dashboard && cd ~/dashboard
+nano dashboard-admin.yaml
 ```
 ```
 apiVersion: v1
