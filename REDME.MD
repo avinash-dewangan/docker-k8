@@ -19,14 +19,17 @@ CMD ["java", "-jar", "project-name-0.0.1-SNAPSHOT.jar"]
 ```
 
 ## create image command
+```
 docker build -t user .
-
+```
 ### docker process command
+```
 docker ps
-
+```
 ### docker list of images
+```
 docker images
-
+```
 ## push the image in local directory
 >docker run -d -p 5000:5000 --restart=always --name registry registry:2 
 > 
