@@ -152,5 +152,4 @@ kubectl logs --follow user-784b6cb6-8xnsg
 
 > docker push your-dockerhub-username/spring-boot-app:latest
 
-
-> kubectl rollout restart deployment <your-deployment-name>
+> kubectl rollout restart deployment your-deployment-name
