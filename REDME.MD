@@ -142,3 +142,15 @@ kubectl logs <pod-name>
 ```
 kubectl logs --follow user-784b6cb6-8xnsg
 ```
+
+### 6. Deploy the Updated Image to Kubernetes
+> mvn clean install
+
+> docker build -t your-dockerhub-username/spring-boot-app:latest .
+
+> docker run -d -p 8080:8080 --name spring-boot-app your-dockerhub-username/spring-boot-app:latest
+
+> docker push your-dockerhub-username/spring-boot-app:latest
+
+
+> kubectl rollout restart deployment <your-deployment-name>
